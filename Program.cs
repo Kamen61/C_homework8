@@ -117,28 +117,28 @@ void PrintArray(int[,] array)
 // 56 8 4 24
 // 10 6 24 49
 
-int[,] MultiplicationTwoMatrices(int[,] arrayFirst, int[,] arraySecond)
-{
-    int[,] multimultiplicationMatrix = new int[arrayFirst.GetLength(0), arrayFirst.GetLength(1)];
-    for (int i = 0; i < arrayFirst.GetLength(0); i++)
-    {
-        for (int j = 0; j < arrayFirst.GetLength(1); j++)
-        {
-            multimultiplicationMatrix[i,j]=arrayFirst[i,j]*arraySecond[i,j];
-        }
-    }
-    return multimultiplicationMatrix;
-}
-int row = 5;
-int columns = 5;
-int[,] matrixFirst = GetArray(row, columns);
-PrintArray(matrixFirst);
-System.Console.WriteLine();
-int[,] matrixSecond = GetArray(row, columns);
-PrintArray(matrixSecond);
-System.Console.WriteLine();
-int[,] multiplication=MultiplicationTwoMatrices(matrixFirst,matrixSecond);
-PrintArray(multiplication);
+// int[,] MultiplicationTwoMatrices(int[,] arrayFirst, int[,] arraySecond)
+// {
+//     int[,] multimultiplicationMatrix = new int[arrayFirst.GetLength(0), arrayFirst.GetLength(1)];
+//     for (int i = 0; i < arrayFirst.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arrayFirst.GetLength(1); j++)
+//         {
+//             multimultiplicationMatrix[i,j]=arrayFirst[i,j]*arraySecond[i,j];
+//         }
+//     }
+//     return multimultiplicationMatrix;
+// }
+// int row = 5;
+// int columns = 5;
+// int[,] matrixFirst = GetArray(row, columns);
+// PrintArray(matrixFirst);
+// System.Console.WriteLine();
+// int[,] matrixSecond = GetArray(row, columns);
+// PrintArray(matrixSecond);
+// System.Console.WriteLine();
+// int[,] multiplication=MultiplicationTwoMatrices(matrixFirst,matrixSecond);
+// PrintArray(multiplication);
 
 
 // Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, 
@@ -147,7 +147,24 @@ PrintArray(multiplication);
 // 12(0,0,0) 22(0,0,1)
 // 45(1,0,0) 53(1,0,1)
 
+void PrintArrayAndIndex(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            System.Console.Write($"{array[i, j]}{(i,j)} {"\t"} ");
+        }
+        System.Console.WriteLine();
+    }
+}
 
+int row=3;
+int columns=3;
+int[,]matrix=GetArray(row,columns);
+PrintArray(matrix);
+System.Console.WriteLine();
+PrintArrayAndIndex(matrix);
 
 // Задача 62. Заполните спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
