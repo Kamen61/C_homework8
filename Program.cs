@@ -27,30 +27,30 @@ void PrintArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            System.Console.Write(array[i,j]+"\t");
+            System.Console.Write(array[i, j] + "\t");
         }
         System.Console.WriteLine();
     }
 }
 
-void PrintArrayDescending(int[,] array){
-    int swap=0;
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            for (int l = 0; l < array.GetLength(1); l++)
-            {
-                if(array[i,j]<array[i,l]){
-                    swap=array[i,l];
-                    array[i,l]=array[i,j];
-                    array[i,j]=swap;
-                }
-            }
-        }
-        
-    }
-}
+// void PrintArrayDescending(int[,] array){
+//     int swap=0;
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             for (int l = 0; l < array.GetLength(1); l++)
+//             {
+//                 if(array[i,j]<array[i,l]){
+//                     swap=array[i,l];
+//                     array[i,l]=array[i,j];
+//                     array[i,j]=swap;
+//                 }
+//             }
+//         }
+
+//     }
+// }
 
 // int row=10;
 // int columns=10;
@@ -72,30 +72,30 @@ void PrintArrayDescending(int[,] array){
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
 
-void SmallesAmountLine(int[,] array){
-    int lineSumFirst=int.MaxValue;
-    int smallerLineNumber=0;
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        int lineSumSecond=0;
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            lineSumSecond=lineSumSecond+array[i,j];
+// void SmallesAmountLine(int[,] array){
+//     int lineSumFirst=int.MaxValue;
+//     int smallerLineNumber=0;
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         int lineSumSecond=0;
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             lineSumSecond=lineSumSecond+array[i,j];
 
-        }
-        if(lineSumFirst>=lineSumSecond){
-            lineSumFirst=lineSumSecond;
-            smallerLineNumber=i+1;
-        }
-    }
-    System.Console.WriteLine("Наименьшая строка под номером {0}",smallerLineNumber);
-}
-int row=3;
-int columns=3;
-int[,]matrix=GetArray(row,columns);
-PrintArray(matrix);
-System.Console.WriteLine();
-SmallesAmountLine(matrix);
+//         }
+//         if(lineSumFirst>=lineSumSecond){
+//             lineSumFirst=lineSumSecond;
+//             smallerLineNumber=i+1;
+//         }
+//     }
+//     System.Console.WriteLine("Наименьшая строка под номером {0}",smallerLineNumber);
+// }
+// int row=3;
+// int columns=3;
+// int[,]matrix=GetArray(row,columns);
+// PrintArray(matrix);
+// System.Console.WriteLine();
+// SmallesAmountLine(matrix);
 
 
 
@@ -117,7 +117,28 @@ SmallesAmountLine(matrix);
 // 56 8 4 24
 // 10 6 24 49
 
-
+int[,] MultiplicationTwoMatrices(int[,] arrayFirst, int[,] arraySecond)
+{
+    int[,] multimultiplicationMatrix = new int[arrayFirst.GetLength(0), arrayFirst.GetLength(1)];
+    for (int i = 0; i < arrayFirst.GetLength(0); i++)
+    {
+        for (int j = 0; j < arrayFirst.GetLength(1); j++)
+        {
+            multimultiplicationMatrix[i,j]=arrayFirst[i,j]*arraySecond[i,j];
+        }
+    }
+    return multimultiplicationMatrix;
+}
+int row = 5;
+int columns = 5;
+int[,] matrixFirst = GetArray(row, columns);
+PrintArray(matrixFirst);
+System.Console.WriteLine();
+int[,] matrixSecond = GetArray(row, columns);
+PrintArray(matrixSecond);
+System.Console.WriteLine();
+int[,] multiplication=MultiplicationTwoMatrices(matrixFirst,matrixSecond);
+PrintArray(multiplication);
 
 
 // Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, 
