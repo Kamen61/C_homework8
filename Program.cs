@@ -11,9 +11,9 @@
 int[,] GetArray(int m, int n)
 {
     int[,] array = new int[m, n];
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
             array[i, j] = new Random().Next(1, 10);
         }
@@ -52,13 +52,16 @@ void PrintArrayDescending(int[,] array){
     }
 }
 
-int row=10;
-int columns=10;
-int[,]matrix=GetArray(row,columns);
-PrintArray(matrix);
-System.Console.WriteLine();
-PrintArrayDescending(matrix);
-PrintArray(matrix);
+// int row=10;
+// int columns=10;
+// int[,]matrix=GetArray(row,columns);
+// PrintArray(matrix);
+// System.Console.WriteLine();
+// PrintArrayDescending(matrix);
+// PrintArray(matrix);
+
+
+
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, 
 // которая будет находить строку с наименьшей суммой элементов.
 // Например, задан массив:
@@ -68,6 +71,31 @@ PrintArray(matrix);
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
+
+void SmallesAmountLine(int[,] array){
+    int lineSumFirst=int.MaxValue;
+    int smallerLineNumber=0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int lineSumSecond=0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            lineSumSecond=lineSumSecond+array[i,j];
+
+        }
+        if(lineSumFirst>=lineSumSecond){
+            lineSumFirst=lineSumSecond;
+            smallerLineNumber=i+1;
+        }
+    }
+    System.Console.WriteLine("Наименьшая строка под номером {0}",smallerLineNumber);
+}
+int row=3;
+int columns=3;
+int[,]matrix=GetArray(row,columns);
+PrintArray(matrix);
+System.Console.WriteLine();
+SmallesAmountLine(matrix);
 
 
 
