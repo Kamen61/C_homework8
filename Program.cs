@@ -147,24 +147,24 @@ void PrintArray(int[,] array)
 // 12(0,0,0) 22(0,0,1)
 // 45(1,0,0) 53(1,0,1)
 
-void PrintArrayAndIndex(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            System.Console.Write($"{array[i, j]}{(i,j)} {"\t"} ");
-        }
-        System.Console.WriteLine();
-    }
-}
+// void PrintArrayAndIndex(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             System.Console.Write($"{array[i, j]}{(i,j)} {"\t"} ");
+//         }
+//         System.Console.WriteLine();
+//     }
+// }
 
-int row=3;
-int columns=3;
-int[,]matrix=GetArray(row,columns);
-PrintArray(matrix);
-System.Console.WriteLine();
-PrintArrayAndIndex(matrix);
+// int row=3;
+// int columns=3;
+// int[,]matrix=GetArray(row,columns);
+// PrintArray(matrix);
+// System.Console.WriteLine();
+// PrintArrayAndIndex(matrix);
 
 // Задача 62. Заполните спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
@@ -172,3 +172,86 @@ PrintArrayAndIndex(matrix);
 // 12 13 14 5
 // 11 16 15 6
 // 10 9 8 7
+
+// void Spiral(int mat)
+// {
+//     int[,] matrix = new int[mat, mat];
+
+//     int count = 1;
+
+
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         matrix[0, i] = count;
+//         count++;
+
+//     }
+
+//     while (count < count2)
+//     {
+
+//         for (int i = 0 + count3; i < matrixLength + count3; i++)
+//         {
+
+//             matrix[countRow, i] = number;
+//             number++;
+//             countColumns = i;
+//         }
+//         count3++;
+//         for (int j = 0 + count3; j < matrixLength + count3; j++)
+//         {
+
+//             matrix[j, countColumns] = number;
+//             number++;
+//             countRow = j;
+//         }
+//         count3++;
+
+//         count++;
+//     }
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             System.Console.Write(matrix[i, j] + "\t");
+//         }
+//         System.Console.WriteLine();
+//     }
+
+
+// }
+
+// Spiral(4);
+
+
+const int n = 6;
+const int m = 6;
+int[,] matrix = new int[n, m];
+
+int row = 0;
+int col = 0;
+int dx = 1;
+int dy = 0;
+int dirChanges = 0;
+int visits = m;
+
+for (int i = 0; i < matrix.Length; i++)
+{
+    matrix[row, col] = i + 1;
+    if (--visits == 0)
+    {
+        visits = m * (dirChanges % 2) + n * ((dirChanges + 1) % 2) - (dirChanges / 2 - 1) - 2;
+        int temp = dx;
+        dx = -dy;
+        dy = temp;
+        dirChanges++;
+    }
+    System.Console.WriteLine(visits);
+    col += dx;
+    row += dy;
+}
+System.Console.WriteLine(visits);
+PrintArray(matrix);
+
+
+
