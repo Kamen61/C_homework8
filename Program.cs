@@ -172,58 +172,7 @@ void PrintArray(int[,] array)
 // 12 13 14 5
 // 11 16 15 6
 // 10 9 8 7
-
-// void Spiral(int mat)
-// {
-//     int[,] matrix = new int[mat, mat];
-
-//     int count = 1;
-
-
-//     for (int i = 0; i < matrix.GetLength(0); i++)
-//     {
-//         matrix[0, i] = count;
-//         count++;
-
-//     }
-
-//     while (count < count2)
-//     {
-
-//         for (int i = 0 + count3; i < matrixLength + count3; i++)
-//         {
-
-//             matrix[countRow, i] = number;
-//             number++;
-//             countColumns = i;
-//         }
-//         count3++;
-//         for (int j = 0 + count3; j < matrixLength + count3; j++)
-//         {
-
-//             matrix[j, countColumns] = number;
-//             number++;
-//             countRow = j;
-//         }
-//         count3++;
-
-//         count++;
-//     }
-//     for (int i = 0; i < matrix.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < matrix.GetLength(1); j++)
-//         {
-//             System.Console.Write(matrix[i, j] + "\t");
-//         }
-//         System.Console.WriteLine();
-//     }
-
-
-// }
-
-// Spiral(4);
-
-
+// код нашел в интернете но в принципе разобрался как он работает 
 const int n = 6;
 const int m = 6;
 int[,] matrix = new int[n, m];
@@ -240,17 +189,15 @@ for (int i = 0; i < matrix.Length; i++)
     matrix[row, col] = i + 1;
     if (--visits == 0)
     {
-        visits = m * (dirChanges % 2) + n * ((dirChanges + 1) % 2) - (dirChanges / 2 - 1) - 2;
+        visits = m * (dirChanges % 2) + n * ((dirChanges + 1) % 2) - (dirChanges / 2 - 1) - 2;// такую формулу я бы сам не придумал((
         int temp = dx;
         dx = -dy;
         dy = temp;
         dirChanges++;
     }
-    System.Console.WriteLine(visits);
     col += dx;
     row += dy;
 }
-System.Console.WriteLine(visits);
 PrintArray(matrix);
 
 
